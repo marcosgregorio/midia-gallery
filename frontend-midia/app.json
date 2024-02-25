@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "frontend-midia-gallery",
-    "slug": "frontend-midia-gallery",
+    "name": "frontend-midia",
+    "slug": "frontend-midia",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
