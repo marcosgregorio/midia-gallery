@@ -1,19 +1,15 @@
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import * as ImagePicker from "expo-image-picker";
 import { ImagePickerResult } from "expo-image-picker";
-import { useState } from "react";
+import React, { useRef } from "react";
+import { GalleryImage } from "../../App";
 
 type SelectImageInputProps = {
-    selectImage: (image: string) => void
+    selectImage: (image: GalleryImage) => void
 }
 
-/*
-*
-* Tá tendo um bug ao clicar no botao de selecionar imagem.
-* só após a segunda vez clicada q funciona a troca de imagem.
- */
 export const SelectImageInput = ({ selectImage }: SelectImageInputProps) => {
-    const [image, setImage] = useState<string>("");
+    const imageRef = useRef('')
 
     const pickImage = async () => {
 
@@ -29,8 +25,7 @@ export const SelectImageInput = ({ selectImage }: SelectImageInputProps) => {
         }
 
         if (!result?.canceled && result.assets[0].uri) {
-            const uri = result.assets[0].uri;
-            setImage(uri);
+            imageRef.current = result.assets[0].uri
         }
     };
 
@@ -38,8 +33,8 @@ export const SelectImageInput = ({ selectImage }: SelectImageInputProps) => {
         <View style={ style.imageSelectStyle }>
             <TouchableOpacity onPress={ async () => {
                 await pickImage()
-                console.log(image)
-                return selectImage(image)
+                const galleryImage = { uri: imageRef.current }
+                return selectImage(galleryImage)
             }
             }>
                 <Text>Selecione uma imagem...</Text>
