@@ -1,5 +1,5 @@
 import { Image, StyleSheet, TouchableOpacity, View } from "react-native";
-import { GalleryImageType } from "../../App";
+import { GalleryImageType } from "./Gallery";
 
 
 type GalleryImageProps = {

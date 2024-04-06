@@ -2,7 +2,7 @@ import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import * as ImagePicker from "expo-image-picker";
 import { ImagePickerResult } from "expo-image-picker";
 import React, { useRef } from "react";
-import { GalleryImageType } from "../../App";
+import { GalleryImageType } from "./Gallery";
 
 
 type SelectImageInputProps = {

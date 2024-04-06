@@ -4,10 +4,6 @@ import Constants from 'expo-constants';
 import * as Permissions from 'expo-permissions';
 import { Gallery } from "./src/components/Gallery";
 
-export type GalleryImageType = {
-    uri: string
-}
-
 
 export default function App() {
 
@@ -33,39 +29,3 @@ const style = StyleSheet.create({
         padding: 10
     }
 })
-// <View style={ style.selectImageInput }>
-//     <SelectImageInput selectImage={ (image) => {
-//         setImage((prevImages) => [...prevImages, image])
-//     } }>
-//
-//     </SelectImageInput>
-// </View>
-// <View style={ style.imageGrid }>
-//     {
-//         images.map(
-//             (image, index) => {
-//                 return (
-//                     <>
-//                         <TouchableOpacity key={ index } onPress={ () => console.log('oiii ', index) }>
-//                             <View style={ {} }>
-//                                 <Text style={ {
-//                                     backgroundColor: 'red',
-//                                     width: 20,
-//                                     height: 20,
-//                                     textAlign: 'center',
-//                                     borderRadius: 50,
-//                                     alignContent: 'center',
-//                                     textAlignVertical: 'center'
-//                                 } }>
-//                                     X
-//                                 </Text>
-//                             </View>
-//                             <Image key={ 'image_' + index } source={ { uri: image.uri } }
-//                                    style={ style.imageStyle }/>
-//                         </TouchableOpacity>
-//                     </>
-//                 )
-//             }
-//         )
-//     }
-// </View>
