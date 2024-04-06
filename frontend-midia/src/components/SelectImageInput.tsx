@@ -2,10 +2,11 @@ import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import * as ImagePicker from "expo-image-picker";
 import { ImagePickerResult } from "expo-image-picker";
 import React, { useRef } from "react";
-import { GalleryImage } from "../../App";
+import { GalleryImageType } from "../../App";
+
 
 type SelectImageInputProps = {
-    selectImage: (image: GalleryImage) => void
+    selectImage: (image: GalleryImageType) => void
 }
 
 export const SelectImageInput = ({ selectImage }: SelectImageInputProps) => {
@@ -16,7 +17,7 @@ export const SelectImageInput = ({ selectImage }: SelectImageInputProps) => {
         let result: ImagePickerResult = await ImagePicker.launchImageLibraryAsync({
             mediaTypes: ImagePicker.MediaTypeOptions.All,
             allowsEditing: true,
-            aspect: [4, 3],
+            aspect: [ 4, 3 ],
             quality: 1,
         });
 
@@ -35,8 +36,7 @@ export const SelectImageInput = ({ selectImage }: SelectImageInputProps) => {
                 await pickImage()
                 const galleryImage = { uri: imageRef.current }
                 return selectImage(galleryImage)
-            }
-            }>
+            } }>
                 <Text>Selecione uma imagem...</Text>
             </TouchableOpacity>
         </View>
