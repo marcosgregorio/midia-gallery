@@ -20,8 +20,6 @@ export const SelectedImage = ({ source, closeSelectedImage }: SelectedImageProps
 
 const style = StyleSheet.create({
     selectedImageBox: {
-        // flex: 1,
-        // backgroundColor: 'black',
         alignItems: "center",
     },
     selectedImageStyle: {

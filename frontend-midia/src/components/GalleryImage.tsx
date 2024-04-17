@@ -8,18 +8,9 @@ type GalleryImageProps = {
     removeImage: (index: number) => void;
     maximizeImage: (index: number) => void;
 }
-export const GalleryImage = ({ index, image, removeImage, maximizeImage }: GalleryImageProps) => {
+export const GalleryImage = ({ index, image, maximizeImage }: GalleryImageProps) => {
     return (
         <View>
-            {/*<TouchableOpacity onPress={ () => removeImage(index) } style={ style.removeButton }>*/ }
-            {/*    <Text style={ {*/ }
-            {/*        textAlign: 'center',*/ }
-            {/*        color: 'white',*/ }
-            {/*    } }>*/ }
-            {/*        X*/ }
-            {/*    </Text>*/ }
-            {/*</TouchableOpacity>*/ }
-
             <TouchableOpacity key={ index } onPress={ () => maximizeImage(index) }>
                 <Image key={ 'image_' + index } source={ { uri: image.uri } }
                        style={ style.imageStyle }/>
