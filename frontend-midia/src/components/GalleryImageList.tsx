@@ -5,10 +5,9 @@ import { GalleryImageType } from "./Gallery";
 
 type GalleryImageListProps = {
     images: GalleryImageType[];
-    removeImage: (index: number) => void;
     maximizeImage: (index: number) => void;
 }
-export const GalleryImageList = ({ images, removeImage, maximizeImage }: GalleryImageListProps) => {
+export const GalleryImageList = ({ images, maximizeImage }: GalleryImageListProps) => {
     return (
         <View style={ style.imageGrid }>
             {
@@ -19,7 +18,6 @@ export const GalleryImageList = ({ images, removeImage, maximizeImage }: Gallery
                                 key={ index + "_image" }
                                 index={ index }
                                 image={ image }
-                                removeImage={ (index) => removeImage(index) }
                                 maximizeImage={ (index) => maximizeImage(index) }
                             />
                         )

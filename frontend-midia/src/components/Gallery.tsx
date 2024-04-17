@@ -30,7 +30,7 @@ export const Gallery = ({}: GalleryProps) => {
         });
     }
 
-    const maximizeImage = (index: number) => {
+    const setMaximizedImage = (index: number) => {
         const imagesCopy = images.slice();
         const galleryImage = imagesCopy[index];
         setSelectedImage(galleryImage);
@@ -45,7 +45,7 @@ export const Gallery = ({}: GalleryProps) => {
                             <SelectImageInput selectImage={ selectImage }/>
                         </View>
                         <GalleryImageList images={ images } removeImage={ removeImage }
-                                          maximizeImage={ maximizeImage }/>
+                                          maximizeImage={ setMaximizedImage }/>
                     </>
                 )
                 : <SelectedImage source={ selectedImage } closeSelectedImage={ () => setSelectedImage(null) }/>

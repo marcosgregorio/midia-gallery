@@ -1,26 +1,20 @@
-import { Image, StyleSheet, TouchableOpacity, View } from "react-native";
+import { Image, StyleProp, StyleSheet, TouchableOpacity, ViewStyle } from "react-native";
 
 type CancelButtonProps = {
     cancelAction?: () => void;
+    styleProp?: StyleProp<ViewStyle>;
 }
 
-export const CancelButton = ({ cancelAction }: CancelButtonProps) => {
+export const CancelButton = ({ cancelAction, styleProp }: CancelButtonProps) => {
     return (
-        <View style={ style.cancelButton }>
-            <TouchableOpacity onPress={ cancelAction }>
-                <Image source={ require('../../assets/marca-x.png') } style={ style.icon }/>
-            </TouchableOpacity>
-        </View>
+        <TouchableOpacity onPress={ cancelAction } style={ styleProp }>
+            <Image source={ require('../../assets/marca-x.png') } style={ style.icon }/>
+        </TouchableOpacity>
     );
 }
 
 const style = StyleSheet.create({
-    cancelButton: {
-        position: 'absolute',
-        bottom: -55,
-        right: '35%',
-        zIndex: 1,
-    },
+    cancelButton: {},
     icon: {
         width: 50,
         height: 50,

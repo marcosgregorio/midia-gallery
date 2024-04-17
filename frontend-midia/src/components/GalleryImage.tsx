@@ -5,7 +5,6 @@ import { GalleryImageType } from "./Gallery";
 type GalleryImageProps = {
     index: number;
     image: GalleryImageType;
-    removeImage: (index: number) => void;
     maximizeImage: (index: number) => void;
 }
 export const GalleryImage = ({ index, image, maximizeImage }: GalleryImageProps) => {
