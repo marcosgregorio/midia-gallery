@@ -26,6 +26,7 @@ export default function App() {
 }
 const style = StyleSheet.create({
     safeAreaStyle: {
-        padding: 10
+        flex: 1,
+        backgroundColor: '#f5f4f4'
     }
 })

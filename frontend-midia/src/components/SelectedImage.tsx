@@ -1,13 +1,18 @@
 import { Image, StyleSheet, View } from "react-native";
 import { GalleryImageType } from "./Gallery";
+import { CancelButton } from "./CancelButton";
 
 type SelectedImageProps = {
     source: GalleryImageType;
+    closeSelectedImage: () => void;
 }
 
-export const SelectedImage = ({ source }: SelectedImageProps) => {
+export const SelectedImage = ({ source, closeSelectedImage }: SelectedImageProps) => {
     return (
         <View style={ style.selectedImageBox }>
+            <View>
+                <CancelButton cancelAction={ closeSelectedImage }/>
+            </View>
             <Image style={ style.selectedImageStyle } source={ { uri: source.uri } }/>
         </View>
     )
@@ -15,11 +20,12 @@ export const SelectedImage = ({ source }: SelectedImageProps) => {
 
 const style = StyleSheet.create({
     selectedImageBox: {
+        // flex: 1,
+        // backgroundColor: 'black',
         alignItems: "center",
-        justifyContent: "center",
     },
     selectedImageStyle: {
-        width: '70%',
-        height: '70%',
+        width: '100%',
+        height: '100%',
     }
 })

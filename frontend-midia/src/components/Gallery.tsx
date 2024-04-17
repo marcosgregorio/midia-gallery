@@ -11,7 +11,7 @@ export type GalleryImageType = {
 type GalleryProps = {}
 export const Gallery = ({}: GalleryProps) => {
     const [ images, setImages ] = useState<GalleryImageType[]>([]);
-    const [ selectedImage, setSelectedImage ] = useState<GalleryImageType>()
+    const [ selectedImage, setSelectedImage ] = useState<GalleryImageType | null>(null)
 
     const selectImage = (image: GalleryImageType) => {
         setImages((images) => [ ...images, image ]);
@@ -31,11 +31,13 @@ export const Gallery = ({}: GalleryProps) => {
     }
 
     const maximizeImage = (index: number) => {
-        setSelectedImage(images[index]);
+        const imagesCopy = images.slice();
+        const galleryImage = imagesCopy[index];
+        setSelectedImage(galleryImage);
     }
 
     return (
-        <>
+        <View style={ style.galleryStyle }>
             { !selectedImage
                 ? (
                     <>
@@ -46,13 +48,17 @@ export const Gallery = ({}: GalleryProps) => {
                                           maximizeImage={ maximizeImage }/>
                     </>
                 )
-                : <SelectedImage source={ selectedImage }/>
+                : <SelectedImage source={ selectedImage } closeSelectedImage={ () => setSelectedImage(null) }/>
             }
-        </>
+        </View>
     )
 }
 
 const style = StyleSheet.create({
+    galleryStyle: {
+        padding: 15,
+    },
+
     selectImageInput: {
         padding: 15,
     },
