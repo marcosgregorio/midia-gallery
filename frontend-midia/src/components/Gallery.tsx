@@ -44,8 +44,7 @@ export const Gallery = ({}: GalleryProps) => {
                         <View style={ style.selectImageInput }>
                             <SelectImageInput selectImage={ selectImage }/>
                         </View>
-                        <GalleryImageList images={ images } removeImage={ removeImage }
-                                          maximizeImage={ setMaximizedImage }/>
+                        <GalleryImageList images={ images } maximizeImage={ setMaximizedImage }/>
                     </>
                 )
                 : <SelectedImage source={ selectedImage } closeSelectedImage={ () => setSelectedImage(null) }/>

@@ -8,6 +8,7 @@ export const DeleteButton = ({ deleteAction, styleProp }: DeleteButtonProps) => 
     return (
         <View>
             <TouchableOpacity onPress={ deleteAction } style={ styleProp }>
+                
                 <Image source={ require('../../assets/delete.png') } style={ style.icon }/>
             </TouchableOpacity>
         </View>

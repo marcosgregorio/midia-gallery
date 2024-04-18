@@ -3,6 +3,7 @@ import { GalleryImageType } from "./Gallery";
 import { CancelButton } from "./CancelButton";
 import { DeleteButton } from "./DeleteButton";
 import { useState } from "react";
+import { MyModal } from "./MyModal";
 
 type SelectedImageProps = {
     source: GalleryImageType;
@@ -15,6 +16,11 @@ export const SelectedImage = ({ source, closeSelectedImage }: SelectedImageProps
 
     return (
         <View style={ style.selectedImageBox }>
+            <MyModal
+                isModalVisible={ isModalVisible }
+                setModalVisible={ setModalVisible }
+                animationType={ "fade" }
+            />
             <View>
                 <CancelButton cancelAction={ closeSelectedImage } styleProp={ style.cancelButton }/>
                 <DeleteButton deleteAction={ () => setModalVisible(true) } styleProp={ style.deleteButton }/>
