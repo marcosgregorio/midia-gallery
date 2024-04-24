@@ -3,6 +3,7 @@ import { SafeAreaView, StyleSheet } from 'react-native';
 import Constants from 'expo-constants';
 import * as Permissions from 'expo-permissions';
 import { Gallery } from "./src/components/Gallery";
+import { globalStyles } from "./src/global/GlobalStyles";
 
 
 export default function App() {
@@ -19,7 +20,7 @@ export default function App() {
     }, []);
 
     return (
-        <SafeAreaView style={ style.safeAreaStyle }>
+        <SafeAreaView style={ [ style.safeAreaStyle, globalStyles.backGroundColorStyle ] }>
             <Gallery/>
         </SafeAreaView>
     );
@@ -27,6 +28,5 @@ export default function App() {
 const style = StyleSheet.create({
     safeAreaStyle: {
         flex: 1,
-        backgroundColor: '#f5f4f4'
     }
 })

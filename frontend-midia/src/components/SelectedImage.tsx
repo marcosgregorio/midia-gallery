@@ -34,6 +34,9 @@ const style = StyleSheet.create({
     selectedImageBox: {
         alignItems: "center",
     },
+    /**
+     * @todo corrigir o estilo dos botões
+     * */
     cancelButton: {
         position: 'absolute',
         bottom: -55,
@@ -49,6 +52,6 @@ const style = StyleSheet.create({
     selectedImageStyle: {
         width: '100%',
         height: '100%',
-        margin: 0,
+        resizeMode: 'contain'
     }
 })

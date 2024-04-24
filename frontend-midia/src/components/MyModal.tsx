@@ -7,9 +7,13 @@ type MyModalProps = {
 }
 export const MyModal = ({ isModalVisible, setModalVisible, animationType }: MyModalProps) => {
     return (
+        /*
+        * @todo finalizar o modal de exclusão
+        * */
         <View style={ style.centeredView }>
             <Modal
                 animationType={ animationType }
+                transparent={ true }
                 visible={ isModalVisible }
                 onRequestClose={ () => {
                     Alert.alert("Modal fechado");
@@ -36,7 +40,7 @@ const style = StyleSheet.create({
     },
     modalView: {
         margin: 20,
-        backgroundColor: 'white',
+        backgroundColor: '',
         borderRadius: 20,
         padding: 35,
         alignItems: 'center',
