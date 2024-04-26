@@ -35,7 +35,8 @@ export const SelectImageInput = ({ selectImage }: SelectImageInputProps) => {
             <TouchableOpacity onPress={ async () => {
                 await pickImage()
                 const galleryImage = { uri: imageRef.current }
-                return selectImage(galleryImage)
+                selectImage(galleryImage)
+                imageRef.current = ''
             } }>
                 <Text>Selecione uma imagem...</Text>
             </TouchableOpacity>

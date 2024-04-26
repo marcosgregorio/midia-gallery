@@ -6,59 +6,70 @@ import { SelectedImage } from "./SelectedImage";
 
 
 export type GalleryImageType = {
-    uri: string
+	id?: number;
+	uri: string;
+}
+
+type SelectedImageType = {
+	id: number;
+	uri: string;
 }
 type GalleryProps = {}
 export const Gallery = ({}: GalleryProps) => {
-    const [ images, setImages ] = useState<GalleryImageType[]>([]);
-    const [ selectedImage, setSelectedImage ] = useState<GalleryImageType | null>(null)
+	const [ images, setImages ] = useState<GalleryImageType[]>([]);
+	const [ selectedImage, setSelectedImage ] = useState<SelectedImageType | null>(null)
 
-    const selectImage = (image: GalleryImageType) => {
-        setImages((images) => [ ...images, image ]);
-    }
+	const selectImage = (image: GalleryImageType) => {
+		setImages((images) => [ ...images, image ]);
+	}
 
-    /**
-     * Só para deixar como observação: o slice() é usado
-     * para copiar os valores do array prevImage e criar
-     * um novo
-     */
-    const removeImage = (index: number) => {
-        setImages((prevImage) => {
-            const newImage = prevImage.slice();
-            newImage.splice(index, 1);
-            return newImage;
-        });
-    }
+	/**
+	 * Só para deixar como observação: o slice() é usado
+	 * para copiar os valores do array prevImage e criar
+	 * um novo
+	 */
+	const removeImage = (index: number) => {
+		setImages((prevImage) => {
+			const newImage = prevImage.slice();
+			newImage.splice(index, 1);
+			return newImage;
+		});
+	}
 
-    const setMaximizedImage = (index: number) => {
-        const imagesCopy = images.slice();
-        const galleryImage = imagesCopy[index];
-        setSelectedImage(galleryImage);
-    }
+	const setMaximizedImage = (index: number) => {
+		const imagesCopy = images.slice();
+		const galleryImage = {
+			id: index,
+			uri: imagesCopy[index].uri,
+		};
+		setSelectedImage(galleryImage);
+	}
 
-    return (
-        <View style={ style.galleryStyle }>
-            { !selectedImage
-                ? (
-                    <>
-                        <View style={ style.selectImageInput }>
-                            <SelectImageInput selectImage={ selectImage }/>
-                        </View>
-                        <GalleryImageList images={ images } maximizeImage={ setMaximizedImage }/>
-                    </>
-                )
-                : <SelectedImage source={ selectedImage } closeSelectedImage={ () => setSelectedImage(null) }/>
-            }
-        </View>
-    )
+	return (
+		<View style={ style.galleryStyle }>
+			{ !selectedImage
+				? (
+					<>
+						<View style={ style.selectImageInput }>
+							<SelectImageInput selectImage={ selectImage }/>
+						</View>
+						<GalleryImageList images={ images } maximizeImage={ setMaximizedImage }/>
+					</>
+				)
+				: <SelectedImage imageId={ selectedImage.id } source={ selectedImage }
+				                 confirmImageDeletionCallback={ (imageId) => removeImage(imageId) }
+				                 closeSelectedImage={ () => setSelectedImage(null) }/>
+			}
+		</View>
+	)
 }
 
 const style = StyleSheet.create({
-    galleryStyle: {
-        padding: 15,
-    },
+	galleryStyle: {
+		padding: 15,
+	},
 
-    selectImageInput: {
-        padding: 15,
-    },
+	selectImageInput: {
+		padding: 15,
+	},
 });

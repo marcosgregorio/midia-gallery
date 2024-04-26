@@ -20,20 +20,8 @@ export const GalleryImage = ({ index, image, maximizeImage }: GalleryImageProps)
 
 const style = StyleSheet.create({
     imageStyle: {
-        width: 80,
-        height: 80,
+        width: 100,
+        height: 100,
+        resizeMode: 'cover',
     },
-
-    imageGrid: {
-        display: "none"
-    },
-
-    removeButton: {
-        position: "relative",
-        // zIndex: 9,
-        backgroundColor: 'red',
-        width: 20,
-        height: 20,
-        borderRadius: 50,
-    }
 })
