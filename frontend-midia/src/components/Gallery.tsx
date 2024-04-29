@@ -7,12 +7,12 @@ import { SelectedImage } from "./SelectedImage";
 
 export type GalleryImageType = {
 	id?: number;
-	uri: string;
+	uri?: string;
 }
 
 type SelectedImageType = {
 	id: number;
-	uri: string;
+	uri?: string;
 }
 type GalleryProps = {}
 export const Gallery = ({}: GalleryProps) => {
@@ -29,6 +29,7 @@ export const Gallery = ({}: GalleryProps) => {
 	 * um novo
 	 */
 	const removeImage = (index: number) => {
+		console.log('oiiiiiiiiiiiiiiiii', index)
 		setImages((prevImage) => {
 			const newImage = prevImage.slice();
 			newImage.splice(index, 1);
@@ -38,7 +39,7 @@ export const Gallery = ({}: GalleryProps) => {
 
 	const setMaximizedImage = (index: number) => {
 		const imagesCopy = images.slice();
-		const galleryImage = {
+		const galleryImage: SelectedImageType = {
 			id: index,
 			uri: imagesCopy[index].uri,
 		};
@@ -57,7 +58,10 @@ export const Gallery = ({}: GalleryProps) => {
 					</>
 				)
 				: <SelectedImage imageId={ selectedImage.id } source={ selectedImage }
-				                 confirmImageDeletionCallback={ (imageId) => removeImage(imageId) }
+				                 confirmImageDeletionCallback={ (imageId) => {
+					                 removeImage(imageId)
+					                 setSelectedImage(null)
+				                 } }
 				                 closeSelectedImage={ () => setSelectedImage(null) }/>
 			}
 		</View>

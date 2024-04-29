@@ -26,7 +26,7 @@ export const MyModal = ({
 				onRequestClose={ () => {
 					Alert.alert("Modal fechado");
 					setModalVisible(!isModalVisible);
-				} }>sasdasdsa
+				} }>
 				<View style={ style.centeredView }>
 					<View style={ style.modalView }>
 						{ children }

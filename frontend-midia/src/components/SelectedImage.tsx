@@ -30,6 +30,7 @@ export const SelectedImage = ({
 						setModalVisible={ setModalVisible }
 						animationType={ "fade" }
 						confirmCallback={ () => confirmImageDeletionCallback(imageId) }
+						cancelCallback={ () => setModalVisible(false) }
 					>
 						<Text>
 							Voce tem certeza que deseja excluir a imagem?
