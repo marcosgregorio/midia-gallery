@@ -1,8 +1,8 @@
 import Sequelize from 'sequelize';
 
-const connection = require('../database/connection');
+const database = require('../database/connection');
 
-const Photo = connection.define('photo', {
+const Photo = database.define('photo', {
 	id: {
 		type: Sequelize.INTEGER,
 		autoIncrement: true,
